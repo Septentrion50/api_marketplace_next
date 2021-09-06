@@ -1,5 +1,6 @@
 class RealEstatesController < ApplicationController
   before_action :set_real_estate, only: [:show, :update, :destroy]
+  before_action :authenticate_user!, except: [:index]
 
   # GET /real_estates
   def index
@@ -16,6 +17,7 @@ class RealEstatesController < ApplicationController
   # POST /real_estates
   def create
     @real_estate = RealEstate.new(real_estate_params)
+    @real_estate.user = User.find(current_user.id)
 
     if @real_estate.save
       render json: @real_estate, status: :created, location: @real_estate
