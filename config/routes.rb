@@ -24,8 +24,8 @@ Rails.application.routes.draw do
       registrations: 'registrations'
     }
 
-  resources :real_estates do 
-    resources :categories
+  resources :categories do 
+    resources :real_estates
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
