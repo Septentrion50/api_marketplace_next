@@ -227,7 +227,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   devise
-  devise-jwt (~> 0.7.0)
+  devise-jwt
   dotenv-rails
   factory_bot_rails
   faker

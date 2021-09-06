@@ -19,7 +19,7 @@ gem 'puma', '~> 5.0'
 # User management
 gem 'devise'
 # JWT tokens
-gem 'devise-jwt', '~> 0.7.0'
+gem 'devise-jwt'
 # Convert models to valid JSON
 gem 'jsonapi-rails'
 
