@@ -4,6 +4,7 @@ class CreateRealEstates < ActiveRecord::Migration[6.1]
       t.string :title
       t.text :description
       t.string :location
+      t.text :address
       t.integer :price
 
       t.timestamps
