@@ -19,12 +19,14 @@ gem 'puma', '~> 5.0'
 # User management
 gem 'devise'
 # JWT tokens
-gem 'devise-jwt'
+gem 'devise-jwt', '~> 0.7.0'
 # Convert models to valid JSON
 gem 'jsonapi-rails'
 
 # Generate fake data
 gem 'faker'
+# Security 
+gem 'dotenv-rails'
 
 
 # Use Active Storage variant
