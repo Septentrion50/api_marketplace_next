@@ -71,14 +71,10 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-jwt (0.7.0)
+    devise-jwt (0.8.1)
       devise (~> 4.0)
-      warden-jwt_auth (~> 0.4)
+      warden-jwt_auth (~> 0.5)
     diff-lcs (1.4.4)
-    dotenv (2.7.6)
-    dotenv-rails (2.7.6)
-      dotenv (= 2.7.6)
-      railties (>= 3.2)
     dry-auto_inject (0.8.0)
       dry-container (>= 0.3.4)
     dry-configurable (0.12.1)
@@ -228,7 +224,6 @@ DEPENDENCIES
   byebug
   devise
   devise-jwt
-  dotenv-rails
   factory_bot_rails
   faker
   jsonapi-rails

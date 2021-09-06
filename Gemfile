@@ -25,8 +25,6 @@ gem 'jsonapi-rails'
 
 # Generate fake data
 gem 'faker'
-# Security 
-gem 'dotenv-rails'
 
 
 # Use Active Storage variant

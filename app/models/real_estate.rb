@@ -1,2 +1,0 @@
-class RealEstate < ApplicationRecord
-end
