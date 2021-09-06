@@ -10,11 +10,27 @@ require 'faker'
 
 RealEstate.destroy_all
 User.destroy_all
+Category.destroy_all
+
+Category.create(title:"House")
+Category.create(title:"Flat")
 
 10.times do
   u = User.create(email: Faker::Internet.email, password: Faker::Internet.password)
 end
 
 30.times do
-  re = RealEstate.create(title: Faker::Space.galaxy, description: Faker::Lorem.paragraph_by_chars(number: 256), address: Faker::Address.full_address, location: Faker::Address.city, price: Faker::Number.number(digits: 8), user: User.all.sample())
+  re = RealEstate.create(
+    title: Faker::Space.galaxy, 
+    description: Faker::Lorem.paragraph_by_chars(number: 256), 
+    address: Faker::Address.full_address, 
+    location: Faker::Address.city, 
+    price: Faker::Number.number(digits: 8), 
+    user: User.all.sample(), 
+    category: Category.all.sample()
+    )
 end
+
+puts "%" * 50
+puts "       Base de données Catgory remplie !"
+puts "%" * 50

@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
   
+  resources :categories
   default_url_options :host => ENV['API_URL_DEV']
 
   namespace :api, defaults: { format: :json } do
