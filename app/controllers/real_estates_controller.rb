@@ -2,18 +2,17 @@ class RealEstatesController < ApplicationController
   before_action :set_real_estate, only: [:show, :update, :destroy]
   before_action :authenticate_user!, except: [:index]
 
-  include Rails.application.routes.url_helpers
 
   # GET /real_estates
   def index
     @real_estates = RealEstate.all
 
-    render json: @real_estates
+    render json: @real_estates.with_attached_images.order(id: :desc)
   end
 
   # GET /real_estates/1
   def show
-    render json: @real_estate.as_json().merge(image_paths: @real_estate.get_images_url)
+    render json: @real_estate
   end
 
   # POST /real_estates
@@ -21,12 +20,12 @@ class RealEstatesController < ApplicationController
     @real_estate = RealEstate.new(real_estate_params)
     @real_estate.user = User.find(current_user.id)
     @real_estate.category = Category.find_by(title: params[:category])
-    params[:images].each do |i|
-      @real_estate.images.attach(io: File.open(i), filename: i)
+    params[:images].each_with_index do |image, index|
+      @real_estate.images.attach(io: File.open(image), filename: "#{@real_estate.title}_image#{index}")
     end
 
     if @real_estate.save
-      render json: @real_estate, status: :created, location: @real_estate
+      render json: @real_estate, status: :created
     else
       render json: @real_estate.errors, status: :unprocessable_entity
     end
