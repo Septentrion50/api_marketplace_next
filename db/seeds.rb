@@ -32,5 +32,5 @@ end
 end
 
 puts "%" * 50
-puts "       Base de données Catgory remplie !"
+puts "       Base de données remplie !"
 puts "%" * 50
