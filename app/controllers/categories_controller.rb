@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show, :update, :destroy]
+  before_action :set_category, only: [:show]
 
   # GET /categories
   def index
@@ -9,9 +9,11 @@ class CategoriesController < ApplicationController
   end
 
   # GET /categories/1
+  def show
+    render json: @category
+  end
 
-
-  # POST /categories
+  #  POST /categories
   def create
     @category = Category.new(category_params)
 
@@ -21,7 +23,6 @@ class CategoriesController < ApplicationController
       render json: @category.errors, status: :unprocessable_entity
     end
   end
-
 
 
   private
