@@ -20,8 +20,10 @@ class RealEstatesController < ApplicationController
     @real_estate = RealEstate.new(real_estate_params)
     @real_estate.user = User.find(current_user.id)
     @real_estate.category = Category.find_by(title: params[:category])
-    params[:images].each_with_index do |image, index|
-      @real_estate.images.attach(io: File.open(image), filename: "#{@real_estate.title}_image#{index}")
+    if params[:images]
+      params[:images].each_with_index do |image, index|
+        @real_estate.images.attach(io: File.open(image), filename: "#{@real_estate.title}_image#{index}")
+      end
     end
 
     if @real_estate.save
