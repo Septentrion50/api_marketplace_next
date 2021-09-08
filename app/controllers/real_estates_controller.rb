@@ -19,6 +19,10 @@ class RealEstatesController < ApplicationController
   def create
     @real_estate = RealEstate.new(real_estate_params)
     @real_estate.user = User.find(current_user.id)
+    puts "%" * 50
+    puts params[:images]
+    puts params[:category]
+    puts "%" * 50
     @real_estate.category = Category.find_by(title: params[:category])
     if params[:images]
       params[:images].each_with_index do |image, index|
@@ -55,7 +59,7 @@ class RealEstatesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def real_estate_params
-      params.require(:real_estate).permit(:title, :description, :location, :address, :price, :category, images: [])
+      params.permit(:title, :description, :location, :address, :price, :category, :images)
     end
 
 end
