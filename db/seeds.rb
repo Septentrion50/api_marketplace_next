@@ -29,6 +29,7 @@ end
     user: User.all.sample(), 
     category: Category.all.sample()
     )
+  re.images.attach(io: File.open(ENV['SAMPLE_IMAGES']), filename: 'sample_image')
 end
 
 puts "%" * 50
