@@ -27,7 +27,7 @@ class RealEstate < ApplicationRecord
     images = []
     self.images.each do |image|
       images << Rails.application.routes.url_helpers.rails_representation_url(
-        image.variant(resize_to_limit: [200, 200]).processed, only_path: true
+        image.variant(resize_to_limit: [600, 600]).processed, only_path: true
       )
     end
     return images
