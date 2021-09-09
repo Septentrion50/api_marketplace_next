@@ -17,13 +17,22 @@ class RealEstatesController < ApplicationController
 
   # POST /real_estates
   def create
-    @real_estate = RealEstate.new(real_estate_params)
+    @real_estate = RealEstate.new()
+    @real_estate.title = params[:title]
+    @real_estate.address = params[:address]
+    @real_estate.description = params[:description]
+    @real_estate.category = Category.find(params[:category].to_i())
+    @real_estate.price = params[:price]
+    @real_estate.location = params[:location]
     @real_estate.user = User.find(current_user.id)
-    @real_estate.category = Category.find_by(title: params[:category])
-    if params[:images]
-      params[:images].each_with_index do |image, index|
-        @real_estate.images.attach(io: File.open(image), filename: "#{@real_estate.title}_image#{index}")
-      end
+    if params[:image1]
+      @real_estate.images.attach(io: File.open(params[:image1]), filename: params[:image1].original_filename)
+    end
+    if params[:image2]
+      @real_estate.images.attach(io: File.open(params[:image2]), filename: params[:image2].original_filename)
+    end
+    if params[:image3]
+      @real_estate.images.attach(io: File.open(params[:image3]), filename: params[:image3].original_filename)
     end
 
     if @real_estate.save
@@ -55,7 +64,7 @@ class RealEstatesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def real_estate_params
-      params.require(:real_estate).permit(:title, :description, :location, :address, :price, :category, images: [])
+      params.permit(:title, :description, :location, :address, :price, :category, :image1, :image2, :image3)
     end
 
 end
