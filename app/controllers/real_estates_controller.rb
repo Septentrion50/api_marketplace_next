@@ -21,7 +21,7 @@ class RealEstatesController < ApplicationController
     @real_estate.title = params[:title]
     @real_estate.address = params[:address]
     @real_estate.description = params[:description]
-    @real_estate.category = Category.find_by(params[:category])
+    @real_estate.category = Category.find_by(title: params[:category])
     @real_estate.price = params[:price]
     @real_estate.location = params[:location]
     @real_estate.user = User.find(current_user.id)
